@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Extension Configuration</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+
+    #url {
+
+      width: 18%;
+
+      height: 25px;
+
+      margin-right: 5px;
+      margin-bottom: 32px;
+
+    }
+
+    .url-field p {
+
+      line-height: 1px;
+
+      width: 50px;
+
+      margin-left: 12px;
+
+    }
+
+    #url1 {
+      width: 18%;
+      height: 25px;
+      margin-right: 5px;
+    }
+
+    #show {
+
+      height: 30px;
+
+      width: 34px;
+
+      margin-right: 22px;
+
+    }
+    #secretshow {
+
+      height: 30px;
+
+      width: 34px;
+
+      margin-right: 22px;
+
+    }
+
+
+    .Partner,
+    .script-id {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .Partner p,
+    .script-id p {
+      margin: 7px;
+      padding: 0px 0px 0px 14px;
+      color: #979797;
+      font-size: small;
+    }
+
+    /* for data elements dailog box */
+    #myFirstDialog {
+      top: 13rem;
+      right: 6rem;
+      min-width: 360px;
+      width: fit-content;
+      height: 222px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      border: 1px black;
+    }
+
+    #myFirstDialog h2 {
+      padding-bottom: 14px;
+      margin: 20px;
+      border-bottom: 2px solid #e1e1e1;
+    }
+
+    * {
+      overflow: hidden;
+      /* font-family: 'Poppins'; */
+    }
+
+    #keyhide1 {
+      margin-right: 5px;
+      padding: 4px 14px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 15px;
+      border: 2px solid black;
+      color: #4b4b4b;
+      background-color: #f5f5f5;
+    }
+
+    #keyhide1:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #6e6e6e;
+      border: 2px solid #6e6e6e;
+    }
+    #keyhide {
+      margin-right: 5px;
+      padding: 4px 14px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 15px;
+      border: 2px solid black;
+      color: #4b4b4b;
+      background-color: #f5f5f5;
+    }
+
+    #keyhide:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #6e6e6e;
+      border: 2px solid #6e6e6e;
+    }
+
+
+    .list {
+      padding: unset;
+      height: 288px;
+      overflow: auto;
+      margin: 20px;
+      border: 1px solid #e3e3e3;
+      border-radius: 5px;
+    }
+
+    .list li {
+      color: black;
+      padding: 7px 12px 7px 10px;
+      height: 33px
+    }
+
+    .list1 {
+      border-bottom: 1px solid #e1e1e1;
+    }
+
+    .selectdropdown {
+      padding: 5px 14px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 15px;
+      background-color: blue;
+      color: white;
+      border: none;
+    }
+    .selectdropdown:hover{
+      cursor: pointer;
+    }
+
+    /* CSS styles for the dropdown */
+    .custom-select {
+      position: relative;
+      display: inline-block;
+    }
+
+    .custom-select select {
+      display: none;
+      /* hide the original dropdown arrow */
+    }
+
+    .placeholder {
+      color: #999;
+      /* placeholder color */
+    }
+
+    .custom-select select,
+    .custom-select .placeholder {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .drop-down {
+      margin-left: 22px;
+      margin-right: 22px;
+      width: 433px;
+      height: 1.75rem;
+      color: #979797;
+    }
+
+    .dailog-parent {
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      overflow: auto;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, );
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    #dailog {
+      width: 50%;
+      background-color: red;
+      margin: auto;
+      padding: 20px;
+    }
+    .buttons{
+      position: absolute;
+      left: 64%;
+      top: 72%;
+      
+    }
+    #myFirstDialog1{
+    padding: 45px;
+    top: 3rem;
+    left: 0rem;
+    width: 47%;
+    height: 57%;
+    background-color:#f5f5f5;
+    border:1px black;
+}
+/* #secretshow{
+    height: 43px;
+} */
+  </style>
+</head>
+
+<body>
+  <h1>Extension Configuration</h1>
+
+  <span style="color: #474747;">Smart Digital Authentication Id (required)</span><br>
+
+
+
+  <div class="Partner">
+    <input id="url" type="text"  onblur="checkEmpty()">
+    <!-- <button id="show"><i class="fa">&#xf1c0;</i></button> -->
+    <div class="data">
+      <dialog id="myFirstDialog">
+        <h2>Data Element Selector</h2>
+        <p>Data Element</p>
+        <select name="drinks" required class="drop-down" id="dataDropDown">
+          <option value="" disabled selected hidden style="color: #979797;">Select an option...</option>
+          <option value="Data Element1">Data Element1</option>
+          <option value="Data Element2">Data Element2</option>
+        </select>
+        <div class="buttons">
+          <button id="keyhide">Cancel</button>
+          <button class="selectdropdown" id="getbtn" onclick="">Save</button>
+        </div>
+      </dialog>
+      <button id="show"><i class="fa">&#xf1c0;</i></button>
+    </div>
+
+    <p id="warning" style="display: none; color: red;">Please specify a valid Authentication Id</p> <br>
+  </div>
+
+  
+
+  <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  <script>
+    // var element = document.getElementById('url').element.reset();
+    function checkEmpty() {
+
+      const input = document.getElementById("url");
+
+      const warning = document.getElementById("warning");
+
+
+      if (input.value.trim() === "dQ1yuDl7z17bZN6NMrgDtuy00j5b9jd1") {
+
+        warning.style.display = "none";
+
+        input.style.borderColor = "black";
+        // input.value="";
+      }
+
+      else if (input.value.trim() === "") {
+
+        warning.style.display = "block";
+
+        input.style.borderColor = "red";
+
+      }
+
+      else if (input.value.trim() !== "dQ1yuDl7z17bZN6NMrgDtuy00j5b9jd1") {
+
+        warning.style.display = "block";
+
+        input.style.borderColor = "red";
+
+      }
+
+      else {
+
+        warning.style.display = "none";
+
+        input.style.borderColor = "black";
+
+      }
+
+
+
+    }
+    
+
+    window.extensionBridge.register({
+
+      init: function (info) {
+
+        if (info.settings) {
+
+          document.querySelector("#url").value = info.settings.url
+
+          // TODO Populate form values from persisted settings.
+
+        }
+
+      },
+
+
+
+      getSettings: function () {
+
+
+
+        return {
+
+          url: document.getElementById('url').value
+
+          // url:document.querySelector("#url").value
+
+        }
+
+        // TODO Return settings object from form values.
+
+      },
+
+
+
+      validate: function () {
+
+        return document.getElementById('url').value.length > 0;
+
+
+
+      }
+
+    });
+    // for select button saving data element
+    document.addEventListener("DOMContentLoaded", function() {
+      //const selectedDropDown = document.querySelector('.selectdropdown')
+      document.querySelector('#getbtn').onclick = function() { 
+      // Get the selected value from the dropdown 
+      // const dataDropdown1 = document.querySelector('#dataDropDown1');
+      const dataDropdown = document.querySelector('#dataDropDown');
+      // const urlInput1 = document.querySelector('#url1');  
+      const urlInput = document.querySelector('#url');  
+      console.log("clicked");
+      // const selectedValue1 = dataDropdown1.value;
+      const selectedValue = dataDropdown.value;
+      console.log(selectedValue);
+      // Display the selected value in the input field 
+      // urlInput1.value = selectedValue1;
+      urlInput.value = selectedValue;
+      var dialog = document.getElementById('myFirstDialog');
+      document.body.style.backgroundColor = "#ffffff"
+      dialog.close();
+    }});
+
+    
+    // for scriptid
+    document.addEventListener("DOMContentLoaded", function() {
+      //const selectedDropDown = document.querySelector('.selectdropdown')
+      document.querySelector('#getbtn1').onclick = function() { 
+      // Get the selected value from the dropdown 
+      const dataDropdown1 = document.querySelector('#dataDropDown1');
+      // const dataDropdown = document.querySelector('#dataDropDown');
+      const urlInput1 = document.querySelector('#url1');  
+      // const urlInput = document.querySelector('#url');  
+      console.log("clicked");
+      const selectedValue1 = dataDropdown1.value;
+      // const selectedValue = dataDropdown.value;
+      console.log(selectedValue1);
+      // Display the selected value in the input field 
+      urlInput1.value = selectedValue1;
+      // urlInput.value = selectedValue;
+    }});
+
+
+    // for data elemts dailog box
+    var dialog = document.getElementById('myFirstDialog');
+    document.getElementById('show').onclick = function () {
+      document.body.style.backgroundColor = "#999999";
+      // document.getElementById('url').style.backgroundColor="#999999";
+      // document.getElementById('show').style.backgroundColor="#999999";
+      dialog.show();
+      event.preventDefault();
+
+    };
+    document.getElementById('getbtn').onclick = function () {
+      document.body.style.backgroundColor = "#ffffff"
+      // document.getElementById('url').style.backgroundColor="#ffffff";
+      // document.getElementById('show').style.backgroundColor="#ffffff";
+
+      console.log("clicked inside select");
+      dialog.close();
+      event.preventDefault();
+
+    };
+    
+    document.getElementById('keyhide').onclick = function () {
+      document.body.style.backgroundColor = "#ffffff"
+
+
+      dialog.close();
+      event.preventDefault();
+
+    };
+
+    var dialog1 = document.getElementById('myFirstDialog1');
+    document.getElementById('secretshow').onclick = function () {
+      document.body.style.backgroundColor = "#999999";
+      dialog1.show();
+      event.preventDefault();
+
+    };
+    document.getElementById('keyhide1').onclick = function () {
+      document.body.style.backgroundColor = "#ffffff"
+
+
+      dialog1.close();
+      event.preventDefault();
+
+    };
+    //const selectDropdownButton = document.getElementById('getbtn'); 
+     // Add event listener to the "Select" 
+   
+    //const getbtn = document.getElementById("getbtn"); //button
+
+  </script>
+
+
+  <!-- from slack -->
+  <div class="coral-InputGroup">
+    <input id="the-input-field" name="theInputField" value="" class="coral-InputGroup-input" placeholder="placeholder">
+    <span class="coral-InputGroup-button">
+      <button icon="data" title="Data Element selector"></button>
+    </span>
+  </div>
+  
+  <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+  
+  <script>
+    /**
+     * When the data element selector button is clicked,
+     * open Launch's data element selector,
+     * then set the nearest input with the selected data element.
+     */
+    const dataButtons = document.querySelectorAll('button[icon="data"]');
+    dataButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        console.log("clickked");
+        const inputGroup = this.closest('div.coral-InputGroup');
+        const inputElement = inputGroup.querySelector('input');
+        window.extensionBridge.openDataElementSelector().then((dataElement) => {
+          inputElement.value = dataElement;
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
