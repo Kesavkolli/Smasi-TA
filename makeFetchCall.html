@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Action</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+
+    .request {
+      font-weight: bold;
+    }
+
+    .first-div {
+      width: 25.5%;
+      display: flex;
+      /* justify-content: space-between; */
+      line-height: 0px;
+      gap: 69px;
+    }
+
+    .first-div p {
+      color: #747474;
+    }
+
+    .input-div {
+      width: 34%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .input-div #fetch {
+      width: 172px;
+      height: 30px;
+    }
+
+    #url {
+      width: 202%;
+      height: 25px;
+      margin-left: 12px;
+    }
+
+    .input-div option {
+      color: #747474;
+    }
+
+    .input-div select {
+      color: #747474;
+
+    }
+
+    .url-field p {
+      line-height: 1px;
+      width: 11rem;
+      margin-left: 12px;
+    }
+
+    .fetch_list ul {
+
+      padding: 0;
+
+      display: flex;
+      list-style-type: none;
+
+    }
+
+    .key_value form {
+
+      display: flex;
+
+    }
+
+    .key_value_button {
+
+      border-radius: 20px;
+
+      font-weight: bold;
+
+      padding: 5px 14px 5px;
+
+      margin-top: 12px;
+
+      border: 2px solid #505050;
+
+      background-color: #ffffff;
+
+    }
+
+    .key_value_button:hover {
+
+      background-color: #505050;
+
+      cursor: pointer;
+
+      color: white;
+
+    }
+
+    #vehicle1 {
+
+      margin: 0%;
+
+    }
+
+    .Response input {
+
+      vertical-align: text-top;
+
+    }
+
+    .Response i {
+
+      color: white;
+
+      background-color: #747474;
+
+    }
+
+    .info {
+
+      position: absolute;
+
+      bottom: 35%;
+
+      left: 16%;
+
+      border-radius: 4px;
+
+      font-size: 14px;
+
+      background-color: #747474;
+
+      color: white;
+
+      padding: 20px;
+
+      display: none;
+
+      height: 165px;
+
+      width: 127px;
+
+    }
+
+    .Response i:hover+.info {
+
+      display: block;
+
+    }
+
+    .fetch_list ul li {
+      padding: 10px;
+
+    }
+
+    .list-1 {
+      border-bottom: 2px solid black;
+
+    }
+
+
+    .fa {
+
+      /* font-size: 18px; */
+
+      /* color: rgb(84, 69, 69); */
+
+      /* border-style: solid; */
+
+      border-radius: 10px;
+
+      /* border-width: thin; */
+
+      /* width: 25px; */
+
+      font-size: 14px;
+
+      font-weight: 400;
+
+      /* height: 33px; */
+
+      padding-top: 6px;
+
+      padding: 5px;
+
+      vertical-align: middle;
+
+    }
+
+
+
+    .Response {
+
+      display: none;
+
+    }
+
+    input[type=checkbox] {
+
+      cursor: pointer;
+
+    }
+
+    input[type=checkbox]:hover+.Response {
+
+      display: block;
+
+    }
+
+    .fetch_list ul li {
+
+      padding: 10px;
+
+    }
+
+    .list-1 {
+
+      border-bottom: 2px solid black;
+
+    }
+
+    .key {
+
+      display: flex;
+
+
+    }
+
+    #pixel {
+      width: 284px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #929292;
+      margin-right: 5px;
+      margin-bottom: 26px;
+    }
+    #url-token{
+      width: 284px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid #929292;
+      margin-right: 5px;
+      margin-bottom: 26px;
+    }
+
+    .pixel {
+
+      width: 284px;
+
+      height: 30px;
+
+      border-radius: 4px;
+
+      border: 1px solid #929292;
+      margin-right: 5px;
+      margin-bottom: 30px;
+
+    }
+
+
+
+    #token {
+
+      width: 284px;
+
+      height: 30px;
+
+      border-radius: 4px;
+
+      border: 1px solid #929292;
+      margin-right: 5px;
+      /* border-radius: 10px; */
+
+    }
+
+    .main_queryparam {
+      display: none;
+    }
+
+    .button-ui {
+      display: none;
+    }
+
+    .button-ui.active {
+      display: block;
+    }
+
+    .fetch_list ul button {
+      cursor: pointer;
+      border: none;
+      color: black;
+      background-color: transparent;
+      padding-bottom: 14px;
+    }
+
+    .fetch_list ul button:hover {
+      border-bottom: 1px solid black;
+    }
+
+    #show {
+      height: 34px;
+      margin-right: 22px;
+    }
+
+    .dele {
+      position: relative;
+      top: 42%;
+      margin-left: 18px;
+      background: transparent;
+      border: none;
+    }
+
+    #myFirstDialog {
+      top: 13rem;
+      right: 6rem;
+      min-width: 360px;
+      width: fit-content;
+      height: 222px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      border: 1px black;
+    }
+    
+
+    #myFirstDialog h2 {
+      padding-bottom: 14px;
+      margin: 20px;
+      border-bottom: 2px solid #e1e1e1;
+    }
+
+
+
+    #keyhide1 {
+      margin-right: 5px;
+      padding: 4px 14px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 15px;
+      border: 2px solid black;
+      color: #4b4b4b;
+      background-color: #f5f5f5;
+    }
+
+    #keyhide1:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #6e6e6e;
+      border: 2px solid #6e6e6e;
+    }
+
+    #keyhide {
+      margin-right: 5px;
+      padding: 4px 14px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 15px;
+      border: 2px solid black;
+      color: #4b4b4b;
+      background-color: #f5f5f5;
+    }
+
+    #keyhide:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #6e6e6e;
+      border: 2px solid #6e6e6e;
+    }
+
+
+    .list {
+      padding: unset;
+      height: 288px;
+      overflow: auto;
+      margin: 20px;
+      border: 1px solid #e3e3e3;
+      border-radius: 5px;
+    }
+
+    .list li {
+      color: black;
+      padding: 7px 12px 7px 10px;
+      height: 33px
+    }
+
+    .list1 {
+      border-bottom: 1px solid #e1e1e1;
+    }
+
+    .selectdropdown {
+      padding: 5px 14px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 15px;
+      background-color: blue;
+      color: white;
+      border: none;
+    }
+
+    .selectdropdown:hover {
+      cursor: pointer;
+    }
+
+    /* CSS styles for the dropdown */
+    .custom-select {
+      position: relative;
+      display: inline-block;
+    }
+
+    .custom-select select {
+      display: none;
+      /* hide the original dropdown arrow */
+    }
+
+    .placeholder {
+      color: #999;
+      /* placeholder color */
+    }
+
+    .custom-select select,
+    .custom-select .placeholder {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .drop-down {
+      margin-left: 22px;
+      margin-right: 22px;
+      width: 433px;
+      color: #979797;
+    }
+
+    .dailog-parent {
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      overflow: auto;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, );
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    #dailog {
+      width: 50%;
+      background-color: red;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .buttons {
+      position: absolute;
+      left: 64%;
+      top: 72%;
+
+    }
+
+    #myFirstDialog1 {
+      top: 13rem;
+      right: 6rem;
+      min-width: 360px;
+      width: fit-content;
+      height: 222px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      border: 1px black;
+    }
+    #myFirstDialog1 h2 {
+      padding-bottom: 14px;
+      margin: 20px;
+      border-bottom: 2px solid #e1e1e1;
+    }
+
+    #myFirstDialog p,  #myFirstDialog1 p{
+      margin: 7px;
+      padding: 0px 0px 0px 14px;
+      color: #979797;
+      font-size: small;
+    }
+
+    #secretshow {
+
+      height: 33px;
+
+      margin-right: 22px;
+
+    }
+  </style>
+
+</head>
+
+<body>
+  <p class="request">Request</p>
+  <div class="first-div">
+    <p>Method(required)</p>
+    <p>Url(required)</p>
+  </div>
+  <div class="input-div">
+    <div>
+      <select name="fetch" id="fetch">
+        <option value="GET" style="color:#747474">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="PATCH">PATCH</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+    </div>
+    <div class="url-field">
+      <input id="url" type="text" placeholder="Enter URL (eg. http://example.com/path?q=true)" onblur="checkEmpty()">
+      <p id="warning" style="display: none; color: red;">Please provide a valid url</p>
+
+    </div>
+  </div>
+  <div class="fetch_list">
+    <ul>
+      <li class="queryparams"><button id="queryparam">Query Params</button></li>
+      <li class="headers"><button id="header">Headers</button></li>
+      <li class="body"><button id="body">Body</button></li>
+    </ul>
+    <div class="button-ui" id="queryparam-ui">
+      <h4>Query Params</h4>
+      <div class="key_value">
+        <form id="input-field">
+          <div class="key-token">
+            <label for="pixel-id">
+              <p style="font-size: 12px;">KEY</p>
+            </label>
+            <div class="key">
+              <!-- <div> -->
+              <input id="url-key" type="text" class="pixel" name="fname" onblur="checkEmpty()">
+              <!-- </div> -->
+              <div class="data">
+                <dialog id="myFirstDialog">
+                  <h2>Data Element Selector</h2>
+                  <p>Data Element</p>
+                  <select name="drinks" required class="drop-down" id="dataDropDown">
+                    <option value="" disabled selected hidden style="color: #979797;">Select an option...</option>
+                    <option value="Data Element1">Data Element1</option>
+                    <option value="Data Element2">Data Element2</option>
+                  </select>
+                  <div class="buttons">
+                    <button id="keyhide">Cancel</button>
+                    <button class="selectdropdown" id="getbtn" onclick="">Save</button>
+                  </div>
+                </dialog>
+                <button id="show"><i class="fa">&#xf1c0;</i></button>
+              </div>
+
+              <!-- <button id="show"><i class="fa">&#xf1c0;</i></button> -->
+            </div>
+          </div>
+          <div>
+            <label for="token">
+              <p style="font-size: 12px;">VALUE</p>
+            </label>
+            <div class="key">
+              <!-- <div> -->
+              <input type="text" id="url-token" name="lname" onblur="checkEmpty2()">
+              <!-- </div> -->
+              <div class="data">
+                <dialog id="myFirstDialog1">
+                  <h2>Select Data Element</h2>
+                  <p>Data Element</p>
+                  <select name="drinks" class="drop-down" id="dataDropDown1" required>
+                    <option value="" disabled selected hidden style="color: #979797;">Select an option...</option>
+                    <option value="Data Element1">Data Element1</option>
+                    <option value="Data Element2">Data Element2</option>
+                  </select>
+                  <div class="buttons">
+                    <button id="keyhide1">Cancel</button>
+                    <button class="selectdropdown" id="getbtn1">Save</button>
+                  </div>
+                </dialog>
+                <button id="secretshow"><i class="fa">&#xf1c0;</i></button>
+              </div>
+
+              <!-- <button id="secretshow"><i class="fa">&#xf1c0;</i></button> -->
+            </div>
+          </div>
+
+        </form>
+        <!-- <form action="">
+          <div class="key-token">
+
+            <div class="key">
+              <div>
+                <input type="text" id="pixel" name="fname" onblur="checkEmpty()">
+              </div>
+              <button id="show"><i class="fa">&#xf1c0;</i></button>
+            </div>
+          </div>
+          <div>
+
+            <div class="key">
+              <div>
+                <input type="text" id="token" name="lname" onblur="checkEmpty2()">
+              </div>
+              <button id="secretshow"><i class="fa">&#xf1c0;</i></button>
+            </div>
+          </div>
+        </form> -->
+      </div>
+      <div id="container">
+        <!-- <button class="key_value_button" onclick="addInput()">+ Add Another</button> -->
+        <!-- <button onclick="addInput()">Add Input Field</button> -->
+        <!-- <button class="dele" onclick="removeInput()"><i class="material-icons">&#xe872;</i></button> -->
+      </div>
+
+
+      <button class="key_value_button" onclick="addInput()">+ Add Another</button>
+
+      <h4>Advanced</h4>
+      <input type="checkbox" id="myCheck" onclick="myFunction()">
+      <label for="myCheck">Save the request response</label>
+
+      <!-- <p id="text" style="display:none">Checkbox is CHECKED!</p> -->
+      <div id="text" style="display:none" class="Response">
+        <label for="vehicle1" style="line-height: 37px;
+          font-size: medium;"> Response key</label><br>
+        <input type="text" value="rs_response01" id="Response key" name="Response key">
+        <i class="fa fa-info"></i>
+        <div class="info">The request result will be added to the "ruleStash" that is sent to the next actions from
+          the
+          rule. It will be accessible at the following path: "arc.ruleStash.ado be-cloud-connector.respons
+          es.rs_response01"
+        </div>
+      </div>
+      <!-- <input type="checkbox" id="cle1" name="Response" value="Response">
+        <label for="vehicle1"> Save the request response</label>
+        <div class="Response">
+          <label for="vehicle1"> Response key</label><br>
+          <input type="text" id="Response key" name="Response key">
+          <i class="fa fa-info"></i>
+          <div class="info">The request result will be added to the "ruleStash" that is sent to the next actions from
+            the
+            rule. It will be accessible at the following path: "arc.ruleStash.ado be-cloud-connector.respons
+            es.rs_response01"</div>
+        </div> -->
+      <!-- </div> -->
+
+    </div>
+    <div class="button-ui" id="header-ui">
+      <h4>Headers</h4>
+      <form style="display: flex;">
+        <div class="key-token">
+          <label for="pixel-id">
+            <p style="font-size: 12px;">KEY</p>
+          </label>
+          <div class="key">
+            <!-- <div> -->
+            <input type="text" id="pixel" name="fname" onblur="checkEmpty()">
+            <!-- </div> -->
+            <div class="data">
+              <dialog id="myFirstDialog">
+                <h2>Select Data Element</h2>
+                <p>Data Element</p>
+                <select name="drinks" required class="drop-down">
+                  <option value="" disabled selected hidden style="color: #979797;">Select an option...</option>
+                  <option value="coffee">Data Element1</option>
+                  <option value="tea">Data Element2</option>
+                </select>
+                <div class="buttons">
+                  <button id="keyhide">Cancel</button>
+                  <button class="selectdropdown" id="getbtn">Select</button>
+                </div>
+              </dialog>
+              <button id="show"><i class="fa">&#xf1c0;</i></button>
+            </div>
+
+            <!-- <button id="show"><i class="fa">&#xf1c0;</i></button> -->
+          </div>
+        </div>
+        <div>
+          <label for="token">
+            <p style="font-size: 12px;">VALUE</p>
+          </label>
+          <div class="key">
+            <!-- <div> -->
+            <input type="text" id="token" name="lname" onblur="checkEmpty2()">
+            <!-- </div> -->
+            <div class="data">
+              <dialog id="myFirstDialog1">
+                <h2>Select Data Element</h2>
+                <p>Data Element</p>
+                <select name="drinks" class="drop-down" id="dataDropDown" required>
+                  <option value="" disabled selected hidden style="color: #979797;">Select an option...</option>
+                  <option value="Data Element1">Data Element1</option>
+                  <option value="Data Element2">Data Element2</option>
+                </select>
+                <div class="buttons">
+                  <button id="keyhide1">Cancel</button>
+                  <button class="selectdropdown" id="getbtn">Select</button>
+                </div>
+              </dialog>
+              <button id="secretshow"><i class="fa">&#xf1c0;</i></button>
+            </div>
+
+
+            <!-- <button id="secretshow"><i class="fa">&#xf1c0;</i></button> -->
+          </div>
+        </div>
+      </form>
+      <div id="container1"></div>
+      <button class="key_value_button" onclick="addInput1()">+ Add Another</button>
+      <h4>Advanced</h4>
+
+      <input type="checkbox" id="myCheck1" onclick="myFunction1()">
+      <label for="myCheck1">Save the Request Response</label>
+      <!-- <p id="text1" style="display:none">Checkbox is CHECKED!</p> -->
+
+      <div id="text1" style="display:none" class="Response">
+        <label for="vehicle1" style="line-height: 37px;
+          font-size: medium;"> Response key</label><br>
+        <input type="text" value="rs_response01" id="Response key" name="Response key">
+        <i class="fa fa-info"></i>
+        <div class="info">The request result will be added to the "ruleStash" that is sent to the next actions from
+          the
+          rule. It will be accessible at the following path: "arc.ruleStash.ado be-cloud-connector.respons
+          es.rs_response01"
+        </div>
+      </div>
+
+    </div>
+    <div class="button-ui" id="body-ui">
+      <p>Body Format</p>
+      <input type="radio" checked=true id="Json" name="fav_language" value="Json">
+      <label for="html">Json</label>
+      <input type="radio" id="Raw" name="fav_language" value="Raw">
+      <label for="css">Raw</label>
+      <h4>Body(Json)</h4>
+      <div class="key_value">
+        <form>
+          <div class="key-token">
+            <label for="pixel-id">
+              <p style="font-size: 12px;">KEY</p>
+            </label>
+            <div class="key">
+              <div>
+                <input type="text" class="pixel" name="fname" onblur="checkEmpty()">
+              </div>
+              <button id="show"><i class="fa">&#xf1c0;</i></button>
+            </div>
+          </div>
+          <div>
+            <label for="token">
+              <p style="font-size: 12px;">VALUE</p>
+            </label>
+            <div class="key">
+              <div>
+                <input type="text" id="token" name="lname" onblur="checkEmpty2()">
+              </div>
+              <button id="secretshow"><i class="fa">&#xf1c0;</i></button>
+            </div>
+          </div>
+        </form>
+        <!-- <form action="">
+            <div class="key-token">
+              <div class="key">
+                <div>
+                  <input type="text" id="pixel" name="fname" onblur="checkEmpty()">
+                </div>
+                <button id="show"><i class="fa">&#xf1c0;</i></button>
+              </div>
+            </div>
+            <div>
+              <div class="key">
+                <div>
+                  <input type="text" id="token" name="lname" onblur="checkEmpty2()">
+                </div>
+                <button id="secretshow"><i class="fa">&#xf1c0;</i></button>
+              </div>
+            </div>
+          </form> -->
+        <div id="container2"></div>
+        <button class="key_value_button" onclick="addInput2()">+ Add Another</button>
+        <h4>Advanced</h4>
+
+        <input type="checkbox" id="myCheck2" onclick="myFunction2()">
+        <label for="myCheck2">Save the Request Response</label>
+        <div id="text2" style="display:none" class="Response">
+          <label for="vehicle1" style="line-height: 37px;
+            font-size: medium;"> Response key</label><br>
+          <input type="text" value="rs_response01" id="Response key" name="Response key">
+          <i class="fa fa-info"></i>
+          <div class="info">The request result will be added to the "ruleStash" that is sent to the next actions from
+            the
+            rule. It will be accessible at the following path: "arc.ruleStash.ado be-cloud-connector.respons
+            es.rs_response01"
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://assets.adobedtm.com/activation/reactor/extensionbridge/extensionbridge.min.js"></script>
+    <script>
+      function myFunction() {
+        var checkBox = document.getElementById("myCheck");
+        var text = document.getElementById("text");
+        if (checkBox.checked == true) {
+          text.style.display = "block";
+        } else {
+          text.style.display = "none";
+        }
+      }
+      function myFunction1() {
+        var checkBox = document.getElementById("myCheck1");
+        var text = document.getElementById("text1");
+        if (checkBox.checked == true) {
+          text.style.display = "block";
+        } else {
+          text.style.display = "none";
+        }
+      }
+      function myFunction2() {
+        var checkBox = document.getElementById("myCheck2");
+        var text = document.getElementById("text2");
+        if (checkBox.checked == true) {
+          text.style.display = "block";
+        } else {
+          text.style.display = "none";
+        }
+      }
+      fetch('https://reqres.in/api/users')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+      function checkEmpty() {
+        const input = document.getElementById("url");
+        const warning = document.getElementById("warning");
+        if (input.value.trim() === "") {
+          warning.style.display = "block";
+          input.style.borderColor = "red";
+        } else {
+          warning.style.display = "none";
+          input.style.borderColor = "black";
+        }
+
+      }
+      window.extensionBridge.register({
+        init: function (info) {
+          if (info.settings) {
+            document.querySelector("#url").value = info.settings.url
+            // TODO Populate form values from persisted settings.
+          }
+        },
+
+        getSettings: function () {
+
+          return {
+            url: document.getElementById('url').value
+            // url:document.querySelector("#url").value
+          }
+          // TODO Return settings object from form values.
+        },
+
+        validate: function () {
+          return document.getElementById('url').value.length > 0;
+
+        }
+      });
+      var queryparam = document.getElementById("queryparam");
+      var header = document.getElementById("header");
+      var body = document.getElementById("body");
+      var button1UI = document.getElementById("queryparam-ui");
+      var button2UI = document.getElementById("header-ui");
+      var button3UI = document.getElementById("body-ui");
+
+      button1UI.classList.add("active");
+      console.log("Hii")
+      queryparam.addEventListener("click", function () {
+        button1UI.classList.add("active");
+        button2UI.classList.remove("active");
+        button3UI.classList.remove("active");
+      });
+
+
+      header.addEventListener("click", function () {
+        button1UI.classList.remove("active");
+        button2UI.classList.add("active");
+        button3UI.classList.remove("active");
+      });
+
+
+      body.addEventListener("click", function () {
+        button1UI.classList.remove("active");
+        button2UI.classList.remove("active");
+        button3UI.classList.add("active");
+      });
+
+      var inputvar = document.getElementById("input-field");
+      var extra_inputvar = `<form>
+          <div class="key-token">
+            <label for="pixel-id">
+              <p style="font-size: 12px;">KEY</p>
+            </label>
+            <div class="key">
+              <div>
+                <input type="text" id="pixel" name="fname" onblur="checkEmpty()">
+              </div>
+              <button id="show"><i class="fa">&#xf1c0;</i></button>
+            </div>
+          </div>
+          <div>
+            <label for="token">
+              <p style="font-size: 12px;">VALUE</p>
+            </label>
+            <div class="key">
+              <div>
+                <input type="text" id="token" name="lname" onblur="checkEmpty2()">
+              </div>
+              <button id="show"><i class="fa">&#xf1c0;</i></button>
+            </div>
+          </div>
+        </form>`
+
+      //click event for add another button
+      function addInput() {
+
+        //var container = document.createElement("div");
+        var input = document.createElement("input");
+        input.type = "text";
+        document.getElementById("container").appendChild(input);
+        input.className = "pixel";
+        var btn = document.createElement("button");
+        btn.innerHTML = `<i class="fa">&#xf1c0;</i>`;
+        btn.id = "show";
+        document.getElementById("container").appendChild(btn);
+        var dialog = document.getElementById('myFirstDialog');
+        // const showButton1 = document.getElementById("showButton1");
+        // showButton1.addEventListener('click', dialog.show())
+
+
+        var input1 = document.createElement("input");
+        input1.type = "text";
+        document.getElementById("container").appendChild(input1);
+        input1.className = "pixel";
+        var btn = document.createElement("button");
+        btn.innerHTML = `<i class="fa">&#xf1c0;</i>`;
+        btn.id = "show";
+        document.getElementById("container").appendChild(btn);
+        var del = document.createElement("button");
+        //del.onclick = removeInput();
+        // del.innerHTML=`<i class="material-icons" id="deleteIcon">&#xe872;</i>`;
+        del.innerHTML = `<i style="font-size:22px" class="fa">&#xf014;</i>`;
+
+        del.className = "dele";
+        del.addEventListener("click", removeInput)
+        //var deleteBtn = document.getElementById("deleteIcon");
+        //deleteBtn.onclick =  removeInput();
+        document.getElementById("container").appendChild(del);
+        var newElem = document.createElement("BR");
+        document.getElementById("container").appendChild(newElem);
+
+      }
+
+
+      function removeInput() {
+        var container = document.getElementById("container");
+        var inputs = container.getElementsByTagName("input");
+        container.removeChild(inputs[inputs.length - 1]);
+
+        var btns = container.getElementsByTagName("button");
+        container.removeChild(btns[btns.length - 1]);
+
+        var container = document.getElementById("container");
+        var inputs = container.getElementsByTagName("input");
+        container.removeChild(inputs[inputs.length - 1]);
+
+        var btns = container.getElementsByTagName("button");
+        container.removeChild(btns[btns.length - 1]);
+        var dels = container.getElementsByTagName("button");
+        container.removeChild(dels[dels.length - 1]);
+        var Br = container.getElementsByTagName("br");
+        container.removeChild(Br[Br.length - 1]);
+
+      }
+
+
+      // for headers
+      function addInput1() {
+        //var container = document.createElement("div");
+        var input = document.createElement("input");
+        input.type = "text";
+        document.getElementById("container1").appendChild(input);
+        input.className = "pixel";
+        var btn = document.createElement("button");
+        btn.innerHTML = `<i class="fa">&#xf1c0;</i>`;
+        btn.id = "show";
+        document.getElementById("container1").appendChild(btn);
+
+
+
+        var input1 = document.createElement("input");
+        input1.type = "text";
+        document.getElementById("container1").appendChild(input1);
+        input1.className = "pixel";
+        var btn = document.createElement("button");
+        btn.innerHTML = `<i class="fa">&#xf1c0;</i>`;
+        btn.id = "show";
+        document.getElementById("container1").appendChild(btn);
+        var del = document.createElement("button");
+        //del.onclick = removeInput();
+        // del.innerHTML=`<i class="material-icons" id="deleteIcon">&#xe872;</i>`;
+        del.innerHTML = `<i style="font-size:22px" class="fa">&#xf014;</i>`;
+
+        del.className = "dele";
+        del.addEventListener("click", removeInput1)
+        //var deleteBtn = document.getElementById("deleteIcon");
+        //deleteBtn.onclick =  removeInput();
+        document.getElementById("container1").appendChild(del);
+        var newElem = document.createElement("BR");
+        document.getElementById("container1").appendChild(newElem);
+
+      }
+
+
+      function removeInput1() {
+        var container1 = document.getElementById("container1");
+        var inputs = container1.getElementsByTagName("input");
+        container1.removeChild(inputs[inputs.length - 1]);
+
+        var btns = container1.getElementsByTagName("button");
+        container1.removeChild(btns[btns.length - 1]);
+
+        var container1 = document.getElementById("container1");
+        var inputs = container1.getElementsByTagName("input");
+        container1.removeChild(inputs[inputs.length - 1]);
+
+        var btns = container1.getElementsByTagName("button");
+        container1.removeChild(btns[btns.length - 1]);
+        var dels = container1.getElementsByTagName("button");
+        container1.removeChild(dels[dels.length - 1]);
+        var Br = container1.getElementsByTagName("br");
+        container1.removeChild(Br[Br.length - 1]);
+
+      }
+
+      // for bodys
+      function addInput2() {
+        //var container = document.createElement("div");
+        var input = document.createElement("input");
+        input.type = "text";
+        document.getElementById("container2").appendChild(input);
+        input.className = "pixel";
+        var btn = document.createElement("button");
+        btn.innerHTML = `<i class="fa">&#xf1c0;</i>`;
+        btn.id = "show";
+        document.getElementById("container2").appendChild(btn);
+
+
+
+        var input1 = document.createElement("input");
+        input1.type = "text";
+        document.getElementById("container2").appendChild(input1);
+        input1.className = "pixel";
+        var btn = document.createElement("button");
+        btn.innerHTML = `<i class="fa">&#xf1c0;</i>`;
+        btn.id = "show";
+        document.getElementById("container2").appendChild(btn);
+        var del = document.createElement("button");
+        //del.onclick = removeInput();
+        // del.innerHTML=`<i class="material-icons" id="deleteIcon">&#xe872;</i>`;
+        del.innerHTML = `<i style="font-size:22px" class="fa">&#xf014;</i>`;
+
+        del.className = "dele";
+        del.addEventListener("click", removeInput2)
+        //var deleteBtn = document.getElementById("deleteIcon");
+        //deleteBtn.onclick =  removeInput();
+        document.getElementById("container2").appendChild(del);
+        var newElem = document.createElement("BR");
+        document.getElementById("container2").appendChild(newElem);
+
+      }
+
+
+      function removeInput2() {
+        var container2 = document.getElementById("container2");
+        var inputs = container2.getElementsByTagName("input");
+        container2.removeChild(inputs[inputs.length - 1]);
+
+        var btns = container2.getElementsByTagName("button");
+        container2.removeChild(btns[btns.length - 1]);
+
+        var container2 = document.getElementById("container2");
+        var inputs = container2.getElementsByTagName("input");
+        container2.removeChild(inputs[inputs.length - 1]);
+
+        var btns = container2.getElementsByTagName("button");
+        container2.removeChild(btns[btns.length - 1]);
+        var dels = container2.getElementsByTagName("button");
+        container2.removeChild(dels[dels.length - 1]);
+        debugger;
+        var Br = container2.getElementsByTagName("br");
+        container2.removeChild(Br[Br.length - 1]);
+
+      }
+
+      // for select button saving data element
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector('#getbtn').onclick = function () {
+          const dataDropdown = document.querySelector('#dataDropDown');
+          const urlInput = document.querySelector('#url-key');
+          console.log("clicked");
+          const selectedValue = dataDropdown.value;
+          console.log(selectedValue);
+          urlInput.value = selectedValue;
+          var dialog2 = document.getElementById('myFirstDialog');
+          document.body.style.backgroundColor = "#ffffff"
+          dialog2.close();
+        }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector('#getbtn1').onclick = function () {
+          const dataDropdown1 = document.querySelector('#dataDropDown1');
+          const urlInput1 = document.querySelector('#url-token');
+          console.log("clicked");
+          const selectedValue1 = dataDropdown1.value;
+          console.log(selectedValue1);
+          urlInput1.value = selectedValue1;
+          var dialog3 = document.getElementById('myFirstDialog1');
+          document.body.style.backgroundColor = "#ffffff"
+          dialog3.close();
+        }
+      });
+
+      // // Create a temporary div element
+      // var tempDiv = document.createElement('div');
+      // // Set the innerHTML of the div to the extra_inputvar string
+      // tempDiv.innerHTML = extra_inputvar;
+
+      // // Use querySelector to select the show button inside the div
+      // var showButton = tempDiv.querySelector('#show');
+
+      // // Access the show button's id
+      // var showButtonId = showButton.id;
+
+      // // Log the show button's id
+      // console.log(showButtonId);
+      // // for data element
+      // var dialog = document.getElementById('myFirstDialog');
+      // showButtonId.onclick = function () {
+      //   document.body.style.backgroundColor = "#999999";
+      //   // document.getElementById('btn1').style.backgroundColor = "#999999";
+      //   // document.getElementById('btn2').style.backgroundColor = "#999999";
+      //   dialog.show();
+      //   event.preventDefault();
+
+      // };
+
+      var dialog = document.getElementById('myFirstDialog');
+      document.getElementById('show').onclick = function () {
+        document.body.style.backgroundColor = "#999999";
+        // document.getElementById('url-key').style.backgroundColor="#999999";
+        // document.getElementById('show').style.backgroundColor="#999999";
+        dialog.show();
+        event.preventDefault();
+
+      };
+
+      document.getElementById('keyhide').onclick = function () {
+        document.body.style.backgroundColor = "#ffffff"
+        document.getElementById('url-key').style.backgroundColor = "#ffffff";
+        document.getElementById('show').style.backgroundColor = "#f0f0f0";
+
+        dialog.close();
+        event.preventDefault();
+
+      };
+
+
+      // var dialog = document.getElementById('myFirstDialog');
+      // document.getElementById('showButton1').onclick = function () {
+      //   document.body.style.backgroundColor = "#999999";
+      //   // document.getElementById('btn1').style.backgroundColor = "#999999";
+      //   // document.getElementById('btn2').style.backgroundColor = "#999999";
+      //   dialog.show();
+      //   event.preventDefault();
+
+      // };
+
+      // var dialog = document.getElementById('myFirstDialog');
+      // var showButton = document.getElementById('show');
+
+      // showButton.onclick = function () {
+      //   dialog.style.backgroundColor = "#999999";
+      //   dialog.show();
+      //   event.preventDefault();
+      // };
+
+      // var dialog = document.getElementById('myFirstDialog');
+      // var showButton1 = document.getElementById('showButton1');
+      // var showButton2 = document.getElementById('showButton2');
+
+      // showButton1.onclick = function () {
+      //   dialog.style.backgroundColor = "#999999";
+      //   dialog.show();
+      //   event.preventDefault();
+      // };
+
+      // showButton2.onclick = function () {
+      //   dialog.style.backgroundColor = "#999999";
+      //   dialog.show();
+      //   event.preventDefault();
+      // };
+
+      var dialog1 = document.getElementById('myFirstDialog1');
+      document.getElementById('secretshow').onclick = function () {
+        document.body.style.backgroundColor = "#999999";
+        // document.getElementById('btn1').style.backgroundColor = "#999999";
+        // document.getElementById('btn2').style.backgroundColor = "#999999";
+        dialog1.show();
+        event.preventDefault();
+
+      };
+      document.getElementById('keyhide1').onclick = function () {
+        document.body.style.backgroundColor = "#ffffff"
+        // document.getElementById('btn1').style.backgroundColor = "#f0f0f0";
+        // document.getElementById('btn2').style.backgroundColor = "#f0f0f0";
+
+        dialog1.close();
+        event.preventDefault();
+
+      };
+      // var dialog = document.getElementById('myFirstDialog');
+      // document.getElementById('secretshow').onclick = function () {
+      //   document.body.style.backgroundColor = "#999999";
+      //   // document.getElementById('btn1').style.backgroundColor = "#999999";
+      //   // document.getElementById('btn2').style.backgroundColor = "#999999";
+      //   dialog.show();
+      //   event.preventDefault();
+
+      // };
+      // document.getElementById('keyhide1').onclick = function () {
+      //   document.body.style.backgroundColor = "#ffffff"
+      //   // document.getElementById('btn1').style.backgroundColor = "#f0f0f0";
+      //   // document.getElementById('btn2').style.backgroundColor = "#f0f0f0";
+
+      //   dialog.close();
+      //   event.preventDefault();
+
+      // };
+
+
+      
+    </script>
+
+    
+</body>
+
+</html>
